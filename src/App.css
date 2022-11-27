@@ -1,11 +1,11 @@
-.todoFalse {
+.fail {
   color: darkred;
   border: 1px solid darkred;
-  width: 10%;
+  width: 32%;
   padding-left: 15px;
 }
 
-.todoDone {
+.success {
   color: darkgreen;
   border: 1px solid darkgreen;
   width: 17%;
@@ -16,13 +16,8 @@
   display: flex;
 }
 
-.select {
-  width: 22px;
-  height: 22px;
-}
-
 .stateTodo {
-  padding-top: 5px;
+  padding-top: 15px;
 }
 
 .button {
@@ -32,16 +27,19 @@
   border-radius: 2px;
   margin-left: 5px;
   background-color: lightblue;
+  box-shadow: 0 0 10px 5px lightblue
 }
 
 input {
   outline-color: rgb(25, 206, 206);
+  border-radius: 5px;
 }
 
 .main {
   margin-left: 40%;
 }
 
-.select {
-  margin-right: 5px;
+.error {
+  border: 1px solid red;
+  box-shadow: 0 0 10px 5px red;
 }

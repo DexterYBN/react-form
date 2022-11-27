@@ -4,14 +4,12 @@ import "../src/App.css"
 function App() {
 
   const [text, setText] = useState("")
+  const [blur, setBlur] = useState(false)
   const [send, setSend] = useState(false)
-  const [error, setError] = useState(false)
-  const [tags, setTags] = useState([])
 
   const handleText = (e) => { // добавление текста в input
     setText(e.target.value);
     setSend(false);
-    setError(false);
   }
 
   const handleChangeButton = (e) => { // добавление текста в console
@@ -19,59 +17,42 @@ function App() {
     console.log(text)
     setText("")
     setSend(true)
-    setTags([...tags, text])
+    setBlur(false)
   }
 
   const hundleBlur = () => {
-    if (!text) {
-      setError(true);
-      setSend(false);
-    }
+    setBlur(true)
+    setSend(false)
   }
 
   return (
     <>
       <div className="main">
         <div className="forms">
-          <select className="select"> {/* селект для показа списка добавленных дел, показывает при нажатии на стрелку */}
-            {tags.map((item, index) => {
-              return <option key={index}>{item}</option>
-            })}
-          </select>
           <form onSubmit={handleChangeButton}>
             <input
-              className="text"
+              className={(!text && blur) && "error"}
               type="text"
               value={text}
               onChange={handleText}
-              placeholder="пишите"
+              placeholder="яз е"
               onBlur={hundleBlur}
             />
-
             {/* кнопка добавления дела */}
             <button
               className="button"
               type="submit"
-              disabled={!text || text[0] === ""}
+              disabled={!text || text[0] === ""} // условие, при которой кнопка бывает неактивной
             >
               добавить
             </button>
           </form>
         </div>
-
         {/* показывает состояние дел */}
         <div className="stateTodo">
-          {send && <div className="todoDone">Дело добавлено</div>}
-          {error && <div className="todoFalse"> Дел нет </div>}
+          {send && <div className="success">Дело добавлено</div>}
+          {(!text && blur) && <div className="fail">Поле ввода не должно быть пустым</div>}
         </div>
-
-        <ul>
-          {tags // Выводит добавленные дела на экран
-            .map((item, index) => {
-              return <li key={index}>{item}</li>
-            })
-            .reverse()}
-        </ul>
       </div>
     </>
   );
