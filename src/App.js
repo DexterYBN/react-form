@@ -61,8 +61,8 @@ function App() {
 
         {/* показывает состояние дел */}
         <div className="stateTodo">
-          {send && <div className="yesTodo">Дело добавлено</div>}
-          {error && <div className="noTodo"> Дел нет </div>}
+          {send && <div className="todoDone">Дело добавлено</div>}
+          {error && <div className="todoFalse"> Дел нет </div>}
         </div>
 
         <ul>

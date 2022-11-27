@@ -1,11 +1,11 @@
-.noTodo {
+.todoFalse {
   color: darkred;
   border: 1px solid darkred;
   width: 10%;
   padding-left: 15px;
 }
 
-.yesTodo {
+.todoDone {
   color: darkgreen;
   border: 1px solid darkgreen;
   width: 17%;
